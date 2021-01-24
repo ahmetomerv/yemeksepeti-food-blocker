@@ -1,0 +1,43 @@
+{
+  "name": "Yemeksepeti Food Blocker",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Block food and restaurants on Yemeksepeti.com",
+  "homepage_url": "https://github.com/ahmetomerv/yemeksepeti-food-blocker",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_action": {
+    "default_title": "Yemeksepeti Food Blocker",
+    "default_popup": "popup.html"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": true
+  },
+  "permissions": [
+    "https://*/*",
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "options_page": "options.html",
+  "content_security_policy": "default-src 'self';",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.yemeksepeti.com/*"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ]
+}

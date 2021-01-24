@@ -1,0 +1,1 @@
+Yemeksepeti Food Blocker
