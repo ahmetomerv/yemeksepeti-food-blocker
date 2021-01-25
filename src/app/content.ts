@@ -18,12 +18,9 @@ chrome.storage.sync.get(['yemeksepetiFoodBlockerState'], (items) => {
 function initializeRestaurantListener() {
 	blocklist.forEach(x => {
 		const restaurants = document.querySelectorAll(`.restaurantName[href*='${x}']`);
-		console.log(restaurants);
-		console.log(x);
 		restaurants.forEach(z => {
 			const parent = z.parentElement.parentElement.parentElement.parentElement;
 			if (parent && parent.parentElement) {
-				//parent.parentElement.style.background = 'grey';
 				parent.parentElement.removeChild(parent);
 			}
 		});
@@ -37,7 +34,6 @@ function initializeFoodListener() {
 		if (blocklist.some(v => z.innerText.toLowerCase().includes(v))) {
 			const parent = z.parentElement.parentElement;
 			if (parent && parent.parentElement) {
-				//parent.parentElement.style.background = 'grey';
 				parent.parentElement.removeChild(parent);
 			}
 		}

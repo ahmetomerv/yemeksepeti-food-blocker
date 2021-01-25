@@ -11,7 +11,6 @@ class Hello extends React.Component {
 
 	componentDidMount() {
 		chrome.storage.sync.get(['yemeksepetiFoodBlockerState'], (items) => {
-			console.log(items['yemeksepetiFoodBlockerState']);
 			this.setState(items['yemeksepetiFoodBlockerState']);
 			this.setupAnchorLinks();
 		});
@@ -37,7 +36,11 @@ class Hello extends React.Component {
 		if (blocklistInput) {
 			this.setState({
 				blocklist: [...blocklist, blocklistInput]
-			}, this.persistStateToLocalStorage);
+			}, () => {
+				this.persistStateToLocalStorage();
+				const input: HTMLInputElement = document.querySelector('.blocklist-input');
+				if (input) input.value = '';
+			});
 		}
 	}
 
@@ -82,10 +85,16 @@ class Hello extends React.Component {
 							</label>
 						</div>
 						<div className="option-input">
-							<button onClick={this.handleAddToBlocklist} className="button button-primary" >Add to blocklist</button>
-							<input onChange={this.handleBlocklistChange} className="input input-primary" type="text"/>
+							<div>
+								<input onChange={this.handleBlocklistChange} className="input input-primary blocklist-input" type="text" placeholder="Type in..."/>
+								<br/><br/>
+								<button onClick={this.handleAddToBlocklist} className="button button-primary" >Add to blocklist</button>
+							</div>
 						</div>
 						<div className="blocklist-container">
+							{ blocklist && blocklist.length && (
+								<h4>Blocked food list:</h4>
+							)}
 							{ blocklist && blocklist.length ? (
 								blocklist.map((item, i) =>
 									<div className="blocklist-item" key={i}>
@@ -94,7 +103,7 @@ class Hello extends React.Component {
 									</div>
 								)
 							) : (
-									<p>Add food to enable blocking</p>
+								<p className="main-description">Add food to enable blocking. Example: <span style={{color: 'grey'}}>çiğ köfte, cig-kofte</span></p>
 							)}
 						</div>
 				</div>
