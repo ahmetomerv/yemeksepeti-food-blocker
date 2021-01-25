@@ -2,6 +2,8 @@
 
 Chrome browser extension to block foods and restaurants on Yemeksepeti.com
 
+Note: Support for blocking will be added for special menu listings (Vodafone, Coca Cola, Kampüs...).
+
 <img src="https://raw.githubusercontent.com/ahmetomerv/yemeksepeti-food-blocker/master/img/yemeksepeti-food-blocker-screenshot.png" alt="Yemeksepeti Food Blocker" />
 
 ### To install on your local machine
