@@ -2,6 +2,8 @@
 
 Chrome browser extension to block foods and restaurants on Yemeksepeti.com
 
+<img src="https://raw.githubusercontent.com/ahmetomerv/yemeksepeti-food-blocker/master/img/yemeksepeti-food-blocker-screenshot.png" alt="Yemeksepeti Food Blocker" />
+
 ### To install on your local machine
 
 - `$ git clone https://github.com/ahmetomerv/yemeksepeti-food-blocker.git`
